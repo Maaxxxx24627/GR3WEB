@@ -1,0 +1,124 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9ecef;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Assurez-vous que le body prend au moins la hauteur de la fenêtre */
+}
+
+.container {
+    position: relative; /* Ajout pour créer un contexte de positionnement */
+    background-color: #fff;
+    margin: auto;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #8CD924;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #8CD924;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn:last-child {
+    margin-right: 0;
+}
+
+.site-button, .gestion-button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.gestion-link {
+    position: absolute;
+    top: 10px; /* Ajustez selon les besoins pour le positionnement vertical */
+    right: 10px; /* Ajustez selon les besoins pour le positionnement horizontal */
+    padding: 5px 10px;
+    z-index: 10;
+    background-color: #8CD924; /* Pour le rendre cohérent avec le style des boutons */
+    color: white; /* Couleur du texte */
+    text-decoration: none; /* Suppression du soulignement */
+    border-radius: 5px; /* Bordures arrondies pour le style */
+}
+
+.site-button {
+    background-color: #8CD924;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 5px;
+}
+
+.site-button:hover {
+    background-color: #76b82a;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container, .form-group, .button-group {
+        padding: 10px;
+        margin: auto;
+        max-width: 100%;
+    }
+
+    .form-group {
+        margin-right: 0; /* Remove the margin for small screens */
+    }
+
+    .btn, .site-button, .gestion-button {
+        width: 100%; /* Full width for buttons on small screens */
+        margin-bottom: 10px; /* Add some margin below the buttons */
+    }
+
+    body {
+        padding: 5px; /* Reduce padding for small screens */
+    }
+
+    .gestion-link {
+        position: static; /* Retourne à la position normale pour les vues mobiles */
+        margin-bottom: 10px; /* Ajoute un espace en dessous lorsqu'en position static */
+    }
+}

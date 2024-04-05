@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 40px; /* Ajustez au besoin pour plus d'espace intérieur */
+    border: 1px solid #000;
+    border-radius: 8px;
+    background: #fff;
+    width: 95%; /* Augmenté pour une largeur plus grande sur petits écrans */
+    max-width: 800px; /* Augmenté pour permettre un container plus large sur écrans larges */
+}
+
+
+.header {
+    margin-bottom: 20px;
+}
+
+/* Mise à jour pour uniformiser le style et l'espacement des boutons */
+.site-button, .gestion-button {
+    display: block; /* Changé à block pour assurer un empilement vertical */
+    padding: 10px 20px;
+    margin: 10px auto; /* Centrage automatique et espacement vertical */
+    border: 1px solid #000;
+    background: #fff;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    width: calc(100% - 40px); /* Ajustement pour inclure le padding et les bordures */
+    box-sizing: border-box; /* S'assure que le width inclut padding et border */
+    transition: transform 0.3s, background-color 0.3s, color 0.3s, border-color 0.3s;
+    text-decoration: none;
+    color: #000;
+}
+
+.site-button {
+    background: #8CD924;
+    color: white;
+}
+
+.gestion-button:hover, .site-button:hover {
+    transform: scale(1.05);
+    background-color: #76b82a; /* Légère variation pour le hover */
+    color: #fff;
+    border-color: #76b82a;
+}
+
+.gestion-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 100%; /* Ajustement pour que le container s'adapte à la largeur de l'écran */
+        box-sizing: border-box; /* S'assure que le padding est inclus dans la largeur */
+    }
+
+    .site-button, .gestion-button {
+        width: calc(100% - 40px); /* Ajuste la largeur pour compter le padding */
+    }
+}

@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card {
+    border: 2px solid #000;
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
+  }
+  
+  .stage, .entreprise {
+    padding: 10px;
+  }
+  
+  .stage:last-child, .entreprise:last-child {
+    border-bottom: none;
+  }
+  
+  .content {
+    display: flex;
+  }
+  
+  .info {
+    width: 70%;
+  }
+  
+  .photo {
+    width: 30%;
+    padding: 10px;
+    box-sizing: border-box; /* Ensures padding is included in width */
+  }
+  
+  .photo img {
+    width: 100%; /* Makes image responsive */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 200px; /* Limits the image height, adjust as needed */
+  }
+  
+  .publication-date, .actions {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .actions button {
+    margin: 5px;
+    padding: 5px 10px;
+  }
+
+  .rating {
+    text-align: center;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 30px;
+  }
+  
+  .rating > .star {
+    cursor: pointer;
+    display: inline-block;
+    color: #ccc; /* Couleur des étoiles non-sélectionnées /
+  }
+  
+  .rating > .star:hover,
+  .rating > .star:hover ~ .star {
+    color: gold; / Couleur des étoiles au survol */
+  }
+  
+  textarea#review-text {
+    resize: none; /* Empêche le redimensionnement */
+    width: 90%; /* Largeur fixe. Vous pouvez ajuster cela selon vos besoins */
+    height: 100px; /* Hauteur fixe. Ajustez selon vos besoins */
+    /* Autres propriétés déjà définies */
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+    }
+    .info, .photo {
+      width: auto;
+    }
+    .photo {
+      margin: 0 auto; /* Centers the photo on smaller screens */
+    }
+  }
+  

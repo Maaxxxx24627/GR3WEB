@@ -1,0 +1,64 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.main-container {
+    margin-top: 50px;
+    /* Adjust the margin as needed */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    /* Space between search and the next elements */
+}
+
+.search-container input {
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-container img {
+    width: 24px;
+    /* Adjust as necessary */
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    /* Space between side menu and main content */
+}
+
+.side-menu .menu-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    /* Space between menu items */
+}
+
+.main-content {
+    flex-grow: 1;
+    /* Take up remaining space */
+    border: 1px solid #ddd;
+    padding: 20px;
+    min-height: 500px;
+    /* Adjust as necessary */
+}

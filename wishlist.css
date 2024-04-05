@@ -1,0 +1,112 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Assure que le body prend au moins toute la hauteur de l'écran */
+  background-color: #f0f0f0;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.wishlist-container {
+  margin: 20px auto;
+  position: relative;
+  width: 80%;
+  margin: 0 auto; /* Centre le conteneur sur la page */
+  max-width: 500px; /* Limite la largeur du conteneur pour les grands écrans */
+  border: 1px solid #000;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optionnel: ajoute une légère ombre pour du style */
+  border-radius: 8px; /* Adoucit les bords du conteneur */
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.wishlist-title {
+  margin-right: auto;
+}
+
+.wishlist-title h2 {
+  display: inline;
+  margin-right: 10px;
+}
+
+.underline {
+  display: inline-block;
+  border-bottom: 3px solid white;
+  width: 70px;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #f2f2f2;
+}
+
+.gestion-link, .site-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  z-index: 10;
+  background-color: #8CD924;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+/* Ajout de media queries pour les appareils mobiles */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 0 10px; /* Ajoute un peu de padding pour éviter que le contenu touche les bords */
+    display: block; /* Si flex ne fonctionne pas comme prévu */
+  }
+
+  .wishlist-container {
+    width: 90%; /* Réduit la largeur du conteneur pour les petits écrans */
+    margin: 20px auto; /* Assure le centrage avec une marge auto */
+    padding: 10px; /* Ajuste le padding pour l'intérieur du conteneur */
+  }
+
+  .btn, .gestion-link, .site-button {
+    margin-top: 5px; /* Ajuste les marges pour éviter les espaces blancs non désirés */
+    padding: 5px 10px; /* Réduit le padding des boutons */
+    font-size: 0.8rem; /* Réduit la taille de police des boutons */
+  }
+
+  .wishlist-item {
+    flex-direction: column; /* Affiche les éléments de la liste verticalement sur les petits écrans */
+    padding: 10px; /* Ajuste le padding des éléments de liste */
+  }
+
+  .wishlist-title {
+    margin-right: 0; /* Supprime la marge à droite pour centrer le titre sur les petits écrans */
+    text-align: center; /* Centre le texte */
+  }
+
+  .btn {
+    width: calc(50% - 5px); /* Les boutons occupent 50% de la largeur disponible avec un espacement entre eux */
+  }
+}

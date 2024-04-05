@@ -1,0 +1,536 @@
+/* Reset some default styles */
+body, h1, h2, h1, h2, ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Apply a font */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+#logo img {
+    max-width:100%; /* Adjust the height as needed */
+}
+
+
+#search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+#search-bar input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 70%; /* Ajustez la largeur selon votre design */
+}
+
+#search-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8CD924;
+    color: white;
+    cursor: pointer;
+}
+
+#search-bar form {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#search-bar input[type="search"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 70%;
+}
+
+#search-bar input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8CD924;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    padding: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.login img{
+    width: 40px;
+}
+
+/* Style the aside (filters and wish-list) */
+aside {
+    display: flex;
+    justify-content: space-around; /* S'assure que les éléments sont répartis uniformément */
+    width: 100%; /* Prend la largeur totale pour s'étendre horizontalement */
+}
+
+aside section {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1; /* Donne à chaque section la capacité de s'étendre de manière égale */
+}
+
+aside h2 {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* Style the main content area */
+main {
+    margin-left: 0; /* Adjust if needed based on your layout */
+    padding: 20px;
+    clear: both; /* Assure que main ne flotte pas à côté de aside */
+}
+
+#internships h1 {
+    border-bottom: 2px solid #8CD924;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style the footer */
+footer {
+    clear: both;
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ccc;
+}
+/* ... other styles ... */
+.Filtres {
+    list-style: none;
+    padding: 10px;
+    margin: 40px 0; /* margin vertical modifié pour aligner les filtres horizontalement */
+    overflow: hidden; /* Ajoutez cela pour contenir les éléments flottants */
+}
+.Filtres li {
+    float: left; /* Gardez cela pour aligner les filtres horizontalement */
+    width: 240px; /* Largeur des boutons de filtre */
+    margin-right: 15px; /* Espacement à droite de chaque bouton */
+    margin-bottom: 15px; /* Espacement en dessous de chaque bouton si nécessaire */
+}
+.Filtres li a:link, .Filtres li a:visited {
+    padding: 10px 15px;
+    display: block;
+    color: white;
+    background-color: #8CD924;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+.Filtres .sous-filtres {
+    width: 240px;
+    list-style-type: none;
+    display: none;
+    padding: 0;
+    margin: 0;
+    position: relative; /* Modifier la position en relative */
+    top: 40px;
+    left: 0;
+}
+
+.Filtres .sous-filtres li {
+    /* Ajustez les styles au besoin */
+    width: 200px;
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+.Filtres .sous-filtres li a:link, .Filtres li a:visited{
+    width: 100%; /* Remplissez la largeur des sous-filtres */
+    display: block;
+    color: white;
+    text-decoration: none;
+    background-color: #8CD924;
+    padding: 10px 15px; /* Ajustez le rembourrage selon les besoins */
+    text-align: center;
+}
+.Filtres .sous-filtres li a:hover{
+    background-color: #8CD924;
+}
+.Filtres li:hover .sous-filtres{
+    display: block;
+    max-width:100%;
+}
+
+.Filtres .sous-filtres li a:link, .Filtres .sous-filtres li a:visited {
+    /* ... autres styles ... */
+    padding: 8px 15px; /* Ajuste le padding pour correspondre aux boutons de filtre principaux */
+    text-align: center; /* Centre le texte dans les sous-filtres */
+}
+
+.Wish-list{
+    height: 30px;
+    list-style: none;
+    padding: 10px;
+    margin-left: auto;
+}
+
+.Wish-list button {
+    width: 240px; /* Assurez-vous que cela correspond à la largeur des boutons de filtre */
+    padding: 10px 15px; /* Même padding que les boutons de filtre pour une hauteur équivalente */
+    display: block;
+    color: white;
+    background-color: #8CD924;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    margin-right: 15px; /* Ajoutez un espacement à droite si nécessaire */
+    margin-bottom: 15px; /* Ajoutez un espacement en bas si nécessaire */
+    cursor: pointer;
+}
+
+.Wish-list button:hover{
+    cursor: pointer;
+}
+
+.bouton{
+    display: flex;
+}
+
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #8CD924;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Show the dropdown menu when clicked */
+  .show {display: block;}
+  
+  /* Style for the WISH-LIST section */
+#wish-list {
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    /* Other styles for wish-list section */
+}
+
+/* Change background color on hover */
+#wish-list:hover {
+    background-color: #f0f0f0; /* New background color when hovered */
+}
+/* Style for the WISH-LIST button */
+#wish-list button {
+    /* Add your styling for the button here */
+    padding: 10px 20px;
+    background-color: #8CD924;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+/* Change background color on hover */
+#wish-list button:hover {
+    background-color: #8CD924   ; /* New background color when hovered */
+}
+
+.Ajoutwish-list {
+    position: absolute; /* Positionnement absolu par rapport à son parent */
+    bottom: 20px; /* 20px du bas du conteneur */
+    right: 20px; /* 20px de la droite du conteneur */
+    padding: 10px;
+    background-color: #8CD924;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.Ajoutwish-list:hover {
+    background-color: #8CD924;
+}
+
+
+.actions-container {
+    display: flex;
+    justify-content: center; /* Centre les éléments */
+    gap: 10px; /* Réduit l'espacement entre les boutons pour les rapprocher */
+}
+
+/* Applique l'ordre inversé pour les boutons */
+aside#filters {
+    order: 2; /* Filtres déplacé à droite */
+    margin-left: 5px; /* Réduit l'espace à gauche pour rapprocher les boutons */
+}
+
+aside#wish-list {
+    order: 1; /* Wish-list déplacé à gauche */
+    margin-right: 5px; /* Réduit l'espace à droite pour rapprocher les boutons */
+}
+
+/* Style pour les boutons à l'intérieur des sections, s'assurer qu'ils remplissent leur conteneur */
+aside#filters .dropbtn, aside#wish-list .site-button {
+    flex-grow: 1; /* Permet aux boutons de grandir et remplir l'espace disponible */
+    width: 100%; /* Assure que les boutons prennent toute la largeur de leur conteneur */
+    padding: 10px 20px; /* Padding ajusté */
+    font-size: 16px; /* Taille de police cohérente */
+    border-radius: 5px; /* Coins arrondis */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur pointeur */
+    text-align: center; /* Texte centré */
+}
+
+.internship-container {
+    position: relative; /* Ajouté pour le positionnement absolu du bouton */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+  
+  .internship-header {
+    margin-top: auto; /* Assure que le header est toujours en haut si vous voulez que le reste du contenu soit en bas */
+    display: flex;
+    justify-content: flex-end; /* Alignement à droite */
+    align-items: start; /* Alignement en haut */
+    width: 100%; /* Assure que le conteneur prend toute la largeur */
+}
+
+
+  .internship-info {
+    max-width: 60%;
+  }
+
+  .internship-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+  .internship-info h2, .internship-info p, .internship-image p {
+    margin-bottom: 10px;
+  }
+  .internship-container h2 {
+    margin-bottom: 30px; /* Ajustez cette valeur pour augmenter l'espace */
+}
+
+  
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .internship-image img {
+    max-width: 25%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    clear: both;
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ccc;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.info-pair {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Ajustez la marge comme nécessaire */
+}
+
+.info-pair h4 {
+    margin-right: 5px; /* Ajustez l'espacement comme nécessaire */
+    font-weight: normal; /* Si vous ne voulez pas que les titres soient en gras */
+    white-space: nowrap; /* Pour éviter le retour à la ligne des en-têtes */
+}
+
+.info-pair h3 {
+    margin-right: 10px; /* Ajoutez l'espacement souhaité ici */
+    display: inline-block; /* Cela garantit que l'espace après est maintenu */
+    white-space: nowrap; /* Cela empêche l'en-tête de se casser sur plusieurs lignes */
+}
+
+
+.info-pair span {
+    font-size: 18px; /* Permet aux informations de remplir l'espace restant */
+}
+
+
+
+
+
+  /* Première media query */
+@media only screen and (max-width: 768px) {
+    /* Réorganisation de la disposition en colonne et centrage */
+    header, nav ul, .bouton, .internship-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    nav ul li {
+        padding: 5px 0; /* Réduction de l'espacement entre les éléments de la barre de navigation */
+    }
+    
+    /* Centrage des boutons de filtre */
+    .Filtres {
+        text-align: center;
+    }
+    .Filtres .sous-filtres {
+        left: 50%; /* Positionner le sous-filtre au milieu */
+        transform: translateX(-50%); /* Décaler le sous-filtre de moitié de sa propre largeur vers la gauche */
+    }
+    
+    .Filtres li {
+        float: none; /* Réinitialiser le flot */
+        display: inline-block; /* Changer pour inline-block */
+    }
+    
+    .Filtres li {
+        margin-bottom: 5px; /* Ajout d'un espacement entre les éléments de filtre */
+    }
+    
+    /* Réorganisation des boutons et de la liste de souhaits */
+    .bouton {
+        flex-wrap: wrap;
+        justify-content: center; /* Centrage des éléments à l'intérieur du conteneur */
+        margin-top: 20px; /* Ajout d'un espacement entre les filtres et le bouton de la liste de souhaits */
+    }
+    
+    .Wish-list button, .Filtres li a {
+        width: auto; /* Permet aux boutons et aux liens de s'ajuster en fonction de la taille du contenu */
+        margin: 5px; /* Ajout d'un espacement entre les boutons et les liens */
+    }
+    .Wish-list button {
+        width: auto; /* Pour les petits écrans, la largeur peut être automatique pour s'adapter au contenu */
+        margin: 5px; /* Ajustement de la marge pour les petits écrans */
+    }
+}
+
+/* Deuxième media query (au-dessus de 600px) */
+@media screen and (max-width: 600px) {
+    /* Réorganisation de la disposition en colonne et centrage */
+    header, nav ul, .bouton, .internship-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    nav ul li {
+        padding: 5px 0; /* Réduction de l'espacement entre les éléments de la barre de navigation */
+    }
+    
+    /* Centrage des boutons de filtre */
+    .Filtres {
+        text-align: center;
+    }
+    
+    .Filtres li {
+        float: none; /* Réinitialiser le flot */
+        display: inline-block; /* Changer pour inline-block */
+    }
+    
+    .Filtres li {
+        margin-bottom: 15px; /* Ajout d'un espacement entre les éléments de filtre */
+    }
+    .Filtres .sous-filtres {
+        left: 50%; /* Positionner le sous-filtre au milieu */
+        transform: translateX(-50%); /* Décaler le sous-filtre de moitié de sa propre largeur vers la gauche */
+    }
+    
+    /* Réorganisation des boutons et de la liste de souhaits */
+    .bouton {
+        flex-wrap: wrap;
+        justify-content: center; /* Centrage des éléments à l'intérieur du conteneur */
+        margin-top: 20px; /* Ajout d'un espacement entre les filtres et le bouton de la liste de souhaits */
+    }
+    
+    .Wish-list button, .Filtres li a {
+        width: auto; /* Permet aux boutons et aux liens de s'ajuster en fonction de la taille du contenu */
+        margin: 5px; /* Ajout d'un espacement entre les boutons et les liens */
+    }
+
+    /* Réorganisation pour afficher la liste de souhaits après les boutons de filtre */
+    aside#filters {
+        order: 1; /* Déplacer les filtres à gauche */
+        margin-right: 5px; /* Réduire l'espace à droite pour rapprocher les boutons */
+    }
+
+    aside#wish-list {
+        order: 2; /* Déplacer la liste de souhaits à droite */
+        margin-left: 5px; /* Réduire l'espace à gauche pour rapprocher les boutons */
+    }
+}

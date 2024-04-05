@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.form-container {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+h2 {
+  color: #8CD924;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.buttons {
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  background-color: #8CD924;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #76b82a;
+}
+
+button:last-child {
+  margin-right: 0;
+}
+
+.gestion-link,
+.site-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  z-index: 10;
+  background-color: #8CD924;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  body {
+    display: block; /* Switches layout to block for scroll on small screens */
+    padding: 10px;
+    height: auto; /* Allows the body to expand as needed on small screens */
+  }
+
+  .form-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%; /* Utilizes the full width for small screens */
+    max-width: none; /* Removes max-width restriction */
+  }
+
+  .gestion-link,
+  .site-button {
+    position: static;
+    display: block;
+    width: auto;
+    margin: 10px auto; /* Center buttons on small screens */
+    text-align: center;
+  }
+}

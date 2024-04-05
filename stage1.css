@@ -1,0 +1,78 @@
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .internship-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 5px;
+    margin:100px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .internship-info {
+    max-width: 60%;
+  }
+  
+  .internship-image {
+    max-width: 40%;
+    text-align: center;
+  }
+  
+  .internship-info h2, .internship-info p, .internship-image p {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .internship-image img {
+    max-width: 25%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+
+  @media screen and (max-width: 600px) {
+    .internship-container {
+      flex-direction: column;
+    }
+  
+    .internship-info, .internship-image {
+      max-width: 100%;
+    }
+  
+    .internship-image {
+      order: -1; /* This will put the image above the text on small screens */
+    }
+  }
+  
+
+
+@media only screen and (max-width: 768px) {
+    .internship-details {
+        flex-direction: column;
+    }
+
+    .photo-details {
+        margin-top: 20px;
+    }
+}

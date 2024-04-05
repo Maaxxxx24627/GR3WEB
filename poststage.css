@@ -1,0 +1,102 @@
+/* Style général pour améliorer la lisibilité et la simplicité */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0; /* Élimination de la marge par défaut */
+    padding: 10px; /* Padding uniforme */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrage horizontal des éléments flex */
+}
+
+/* Amélioration de l'apparence et de l'espacement du formulaire */
+form {
+    box-sizing: border-box; /* S'assure que padding et border sont inclus dans la largeur */
+    max-width: 600px; /* Limite la largeur pour les grands écrans */
+    width: 100%; /* S'adapte à la largeur de l'écran jusqu'à max-width */
+    margin: 20px auto; /* Centrage du formulaire */
+    padding: 20px; /* Espacement intérieur */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre subtile pour le contraste */
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%; /* Les champs prennent toute la largeur disponible */
+    padding: 10px;
+    margin-bottom: 20px; /* Espacement entre les champs */
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bordures arrondies */
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between; /* Espacement équilibré entre les boutons */
+    align-items: center;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur petits écrans */
+    margin-top: 20px;
+}
+
+button {
+    flex-grow: 1; /* Les boutons s'étendent pour remplir l'espace */
+    margin: 5px; /* Petit espacement autour des boutons */
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #8CD924; /* Couleur unifiée */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8; /* Réaction au survol */
+}
+
+@media (max-width: 768px) {
+    .buttons-container {
+        flex-direction: column; /* Empilage vertical des boutons sur écrans moyens et petits */
+    }
+
+    button {
+        width: 100%; /* Les boutons prennent toute la largeur */
+        margin: 10px 0; /* Ajustement de l'espacement pour la disposition verticale */
+    }
+}
+
+/* Ajout de styles spécifiques pour les téléphones */
+@media (max-width: 600px) {
+    body {
+        padding: 5px; /* Réduction du padding pour économiser de l'espace */
+    }
+
+    form {
+        width: calc(100% - 10px); /* Réduction légère pour assurer le non-débordement */
+        margin: 10px auto; /* Assure que le formulaire reste centré */
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"] {
+        padding: 8px; /* Légère réduction pour améliorer l'ergonomie */
+    }
+
+    .buttons-container {
+        margin-top: 10px; /* Réduction de l'espace au-dessus des boutons */
+    }
+
+    button {
+        padding: 8px; /* Réduction pour une meilleure tenue dans la main */
+        font-size: 14px; /* Ajustement de la taille de police pour de meilleures proportions */
+    }
+}
