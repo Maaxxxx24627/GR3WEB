@@ -1,0 +1,739 @@
+<?php
+
+require_once('/var/www/douvinaigrette/MVC/app/core/Database.php');
+
+class TestDB {
+    use Database;
+}
+
+// Créer une instance de TestDB
+$testDb = new TestDB();
+
+// Définir une requête de test pour correspondre à votre table de base de données
+$query = "SELECT * FROM OffreStage"; // Assurez-vous que le nom de la table est correct
+
+// Exécution de la requête
+$resultats = $testDb->query($query);
+
+
+
+// Vérifier si des résultats ont été retournés et les afficher sous forme de tableau HTML
+if ($resultats) {
+    echo "<table border='1'>";
+    // Créer l'en-tête du tableau avec les noms de colonnes
+    echo "<tr>
+            <th>Id_OffreStage</th>
+            <th>Titre</th>
+            <th>Competences</th>
+            <th>TypePromotion</th>
+            <th>Durée</th>
+            <th>Rémunération</th>
+            <th>Date</th>
+            <th>NombrePlace</th>
+            <th>NombrePersonnePostulé</th>
+            <th>TopOffre</th>
+            <th>Id_Entreprise</th>
+            <th>Id_Utilisateur</th>
+            <th>Lieu</th>
+            <th>NomEntreprise</th>
+          </tr>";
+
+    // Parcourir chaque ligne de résultat et créer une ligne de tableau pour chaque
+    foreach ($resultats as $ligne) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($ligne->Id_OffreStage) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Titre) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Competences) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->TypePromotion) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Durée) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Rémunération) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Date) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->NombrePlace) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->NombrePersonnePostulé) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->TopOffre) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Id_Entreprise) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Id_Utilisateur) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->Lieu) . "</td>";
+        echo "<td>" . htmlspecialchars($ligne->NomEntreprise) . "</td>";
+
+
+
+        echo "<td>
+        <form action='' method='post'>
+            <input type='hidden' name='idToDelete' value='" . htmlspecialchars($ligne->Id_OffreStage) . "'>
+            <input type='submit' value='Supprimer'>
+        </form>
+      </td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+} else {
+    echo "Aucun résultat trouvé.";
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form action="" method="post">
+
+
+    <label for="Id_OffreStage">Id:</label>
+    <input type="text" id="Id_OffreStage" name="Id_OffreStage">
+
+
+    <label for="titre">Titre:</label>
+    <input type="text" id="titre" name="titre" >
+
+
+    <label for="competences">Competences:</label>
+    <input type="text" id="competences" name="competences" >
+
+    <label for="typePromotion">Type de Promotion:</label>
+    <input type="text" id="typePromotion" name="typePromotion" >
+
+    <label for="duree">Durée:</label>
+    <input type="text" id="duree" name="duree" >
+
+    <label for="remuneration">Rémunération:</label>
+    <input type="number" id="remuneration" name="remuneration" >
+
+    <label for="date">Date de début:</label>
+    <input type="date" id="date" name="date">
+
+    <label for="nombrePlace">Nombre de Places:</label>
+    <input type="number" id="nombrePlace" name="nombrePlace" >
+
+    <label for="nombrePersonnePostule">Nombre de Personnes Ayant Postulé:</label>
+    <input type="number" id="nombrePersonnePostule" name="nombrePersonnePostule" >
+
+    <label for="topOffre">Top Offre (0 ou 1):</label>
+    <input type="number" id="topOffre" name="topOffre" min="0" max="1" >
+
+    <label for="idEntreprise">ID de l'Entreprise:</label>
+    <input type="number" id="idEntreprise" name="idEntreprise" >
+
+    <label for="idUtilisateur">ID de l'Utilisateur:</label>
+    <input type="number" id="idUtilisateur" name="idUtilisateur" >
+
+    <label for="lieu">Lieu:</label>
+    <input type="text" id="lieu" name="lieu" >
+
+    <label for="nomEntreprise">Lieu:</label>
+    <input type="text" id="nomEntreprise" name="nomEntreprise" >
+
+    <input type="submit" name = "ajouter" value="Ajouter">
+    <input type="submit" name = "id" value="Modifier">
+
+</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#submitButton').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/MVC/app/core/DELETE.php', // Assurez-vous que le chemin est correct
+            type: 'post',
+            data: $('#monFormulaire').serialize(),
+            success: function(response) {
+                // Ici vous pouvez mettre à jour votre page avec les nouvelles données
+                $('#result').html(response);
+                echo("bg");
+            },
+            error: function() {
+                $('#result').html('Une erreur est survenue.');
+                echo("cheh");
+            }
+        });
+    });
+});
+</script>
+
+
+</body>
+</html>
+
+<?php
+    if (isset($_POST['ajouter'])) {
+        require '/var/www/douvinaigrette/MVC/app/core/ADD.php';
+        }
+
+    if(isset($_POST['idToDelete'])) {
+        require '/var/www/douvinaigrette/MVC/app/core/DELETE.php';
+    }
+    if(isset($_POST['id'])) {
+   
+        require '/var/www/douvinaigrette/MVC/app/core/MODIFY.php';
+    }
+?>
+
+
+
+
+
+
+
+
+
+
+
+MODIFY.php:
+
+
+<?php
+
+require_once('/var/www/douvinaigrette/MVC/app/core/Database.php');
+
+
+class ModifyData {
+    use Database;
+
+    public function getOfferById($id) {
+        $query = "SELECT * FROM OffreStage WHERE Id_OffreStage = :id";
+        try {           
+            $result = $this->get_row($query, ['id' => $id]);
+            if ($result) {
+                return $result;
+                
+            } else {
+                // Gestion si aucune ligne n'est retournée
+                echo "Aucune offre trouvée avec cet ID.";
+             
+                return false;
+            }
+        } catch (PDOException $e) {
+                die("Erreur lors de la suppression de la ligne : " . $e->getMessage());
+        }
+    }
+
+    public function updateOffer($data) {
+        try {
+            $query = "UPDATE OffreStage SET Titre = :titre, Competences = :competences, TypePromotion = :typePromotion, Durée = :duree, Rémunération = :remuneration, Date = :date, NombrePlace = :nombrePlace, NombrePersonnePostulé = :nombrePersonnePostule, TopOffre = :topOffre, Id_Entreprise = :idEntreprise, Id_Utilisateur = :idUtilisateur, Lieu = :lieu, NomEntreprise = :nomEntreprise WHERE Id_OffreStage = :Id_OffreStage";
+            $result = $this->query($query, $data);
+    
+            // Supposons que la méthode query() retourne false en cas d'échec et autre chose en cas de succès
+            if ($result === false) {
+                // La mise à jour a échoué
+                return false;
+            } else {
+                // La mise à jour a réussi
+                return true;
+            }
+        } catch (PDOException $e) {
+            // Une exception a été capturée, ce qui indique un échec
+            return false;
+        }
+    }
+    
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $ModifyData = new ModifyData();
+    
+    $updatedata = [
+        'Id_OffreStage' => $_POST['Id_OffreStage'] ,
+        'titre' => $_POST['titre'] ,
+        'competences' => $_POST['competences'] ,
+        'typePromotion' => $_POST['typePromotion'] ,
+        'duree' => $_POST['duree'] ,
+        'remuneration' => $_POST['remuneration'] ,
+        'date' => $_POST['date'],
+        'nombrePlace' => $_POST['nombrePlace'] ,
+        'nombrePersonnePostule' => $_POST['nombrePersonnePostule'] ,
+        'topOffre' => $_POST['topOffre'],
+        'idEntreprise' => $_POST['idEntreprise'] ,
+        'idUtilisateur' => $_POST['idUtilisateur'] ,
+        'lieu' => $_POST['lieu'] ,
+        'nomEntreprise' => $_POST['nomEntreprise'] 
+    ];
+    
+
+    $ModifyData->updateOffer($updatedata);
+    
+}
+
+
+
+
+MODIFY.php (js)
+
+
+<?php
+
+require_once('/var/www/douvinaigrette/MVC/app/core/Database.php');
+
+class ModifyData {
+    use Database;
+
+    public function getOfferById($id) {
+        $query = "SELECT * FROM OffreStage WHERE Id_OffreStage = :id";
+        try {           
+            $result = $this->get_row($query, ['id' => $id]);
+            if ($result) {
+                return $result;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
+
+    public function updateOffer($data) {
+        try {
+            $query = "UPDATE OffreStage SET Titre = :titre, Competences = :competences, TypePromotion = :typePromotion, Durée = :duree, Rémunération = :remuneration, Date = :date, NombrePlace = :nombrePlace, NombrePersonnePostulé = :nombrePersonnePostule, TopOffre = :topOffre, Id_Entreprise = :idEntreprise, Id_Utilisateur = :idUtilisateur, Lieu = :lieu, NomEntreprise = :nomEntreprise WHERE Id_OffreStage = :Id_OffreStage";
+            $result = $this->query($query, $data);
+    
+            if ($result === false) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+}
+
+
+
+JS:
+
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            console.log("Form submission triggered");
+            event.preventDefault(); // Empêcher le rechargement de la page
+            
+            var formData = $(this).serializeArray();
+            var data = {};
+            $(formData).each(function(index, obj){
+                data[obj.name] = obj.value;
+            });
+            
+            $.ajax({
+                url: 'https://douvinaigrette.sbihel.fr/API',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(response) {
+                    console.log("Réponse réussie:", response);
+                    if(response.success) {
+                        console.log(response.data)
+                        $('#titre').val(response.data.Titre);
+                        $('#competences').val(response.data.Competences);
+                        $('#typePromotion').val(response.data.TypePromotion);
+                        $('#duree').val(response.data.Durée);
+                        $('#remuneration').val(response.data.Rémunération);
+                        $('#date').val(response.data.Date);
+                        $('#nombrePlace').val(response.data.NombrePlace);
+                        $('#nombrePersonnePostule').val(response.data.NombrePersonnePostulé);
+                        $('#topOffre').val(response.data.TopOffre);
+                        $('#idEntreprise').val(response.data.Id_Entreprise);
+                        $('#idUtilisateur').val(response.data.Id_Utilisateur);
+                        $('#lieu').val(response.data.Lieu);
+                        $('#nomEntreprise').val(response.data.NomEntreprise);
+                        console.log($('#titre').val())
+                        console.log($('#competences').val())
+                        console.log($('#typePromotion').val())
+                        console.log($('#duree').val())
+                        console.log($('#remuneration').val())
+                        console.log($('#date').val())
+                        console.log($('#nombrePlace').val())
+                        console.log($('#nombrePersonnePostule').val())
+                        console.log($('#topOffre').val())
+                        console.log($('#idEntreprise').val())
+                        console.log($('#idUtilisateur').val())
+                        console.log($('#lieu').val())
+                        console.log($('#nomEntreprise').val())
+                        
+                        
+                        // Mise à jour réussie, affichez un message ou mettez à jour l'affichage ici
+                        alert(response.message);
+                        // Vous pouvez aussi recharger la partie de la page qui contient les données mises à jour sans recharger toute la page
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                    console.log("Status: " + jqXHR.status);
+                    console.log("Response: " + jqXHR.responseText);
+                    alert('Une erreur est survenue lors de la mise à jour.');
+}
+            });
+        });
+    });
+    </script>
+
+
+
+databse pour js
+<?php
+
+trait Database {
+    private function connect() {
+        try {
+            $host = 'localhost';
+            $dbname = 'douvinaigrette';
+            $username = 'projet_web_G3';
+            $password = '&M;k3V?B]F&DDM7';
+            $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo; // Retourne l'objet PDO
+        } catch (PDOException $e) {
+            error_log("Erreur de connexion à la base de données : " . $e->getMessage());
+        }
+    }
+
+    public function query($query, $data = []) {
+        $con = $this->connect();
+        if (!$con) {
+            return null;
+        }
+        $stm = $con->prepare($query);
+
+        try {
+            if($stm->execute($data)) {
+                return $stm->fetchAll(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $e) {
+            
+            return null;
+            
+        }
+
+        return false;
+    }
+
+    public function get_row($query, $data = []) {
+        $con = $this->connect();
+        if (!$con) {
+            return null;
+        }
+        $stm = $con->prepare($query);
+
+        try {
+            if($stm->execute($data)) {
+                return $stm->fetch(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $e) {
+            return null;
+        }
+
+        return false;
+    }
+}
+
+
+
+ancien_login:
+
+
+<?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$errorMessage = '';
+
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=douvinaigrette', 'projet_web_G3', '&M;k3V?B]F&DDM7');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    $errorMessage = "Impossible de se connecter à la base de données: " . $e->getMessage();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($errorMessage)) {
+    $email = $_POST['username'];
+    $password = $_POST['password'];
+
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch();
+
+        if ($user && $password === $user['MotDePasse']) {
+            $_SESSION['user_id'] = $user['Id_Utilisateur'];
+            $_SESSION['user_name'] = $user['Nom'];
+            $_SESSION['user_type'] = $user['Type'];
+
+            switch($user['Type']) {
+                case 'admin':
+                    header('Location: HomeAdmin'); // Page d'accueil de l'administrateur
+                    exit();
+                case 'Pilote':
+                    header('Location: HomePilote'); // Page d'accueil du pilote
+                    exit();
+                case 'Eleve':
+                    header('Location: HomeEleve'); // Page d'accueil de l'élève
+                    exit();
+                default:
+                    $errorMessage = "Type d'utilisateur non reconnu.";
+                    break;
+            }
+        } else {
+            $errorMessage = 'Identifiant ou mot de passe incorrect.';
+        }
+    } catch (PDOException $e) {
+        $errorMessage = "Erreur lors de la vérification de l'utilisateur: " . $e->getMessage();
+    }
+}
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://assets.douvinaigrette.sbihel.fr/login.css">
+</head>
+<body>
+
+<div class="login-container">
+<div id="logo">
+    <a href="Home">
+        <img src="https://assets.douvinaigrette.sbihel.fr/logo.png" alt="Company Logo">
+    </a>
+</div>
+    <div class="login-form">
+        <h2>SE CONNECTER</h2>
+        <!-- L'action est maintenant ce fichier lui-même -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="input-group">
+                <label for="username">EMAIL</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit">SE CONNECTER</button>
+            </div>
+            <?php
+            if ($errorMessage != '') {
+                echo '<div class="error-message">' . $errorMessage . '</div>';
+            }
+            ?>
+        </form>
+        <div class="links">
+            <a href="gestion">GESTION</a>
+            <a href="changemdp">PASSWORD LOST</a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelector('form').addEventListener('submit', function(event) {
+    var password = document.getElementById('password').value;
+    
+    // Expression régulière vérifiant les critères du mot de passe
+    var pattern = /^(?=.*\d)(?=.*[A-Z])(?=.*\W).{8,}$/;
+    
+    if (!pattern.test(password)) {
+        alert('Le mot de passe doit contenir au minimum 8 caractères, dont une majuscule, un chiffre et un caractère spécial.');
+        event.preventDefault(); // Empêche l'envoi du formulaire
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+<?  
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($errorMessage)) {
+    $email = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Validation du mot de passe
+    $pattern = '/^(?=.*\d)(?=.*[A-Z])(?=.*\W).{8,}$/';
+    if (!preg_match($pattern, $password)) {
+        $errorMessage = 'Le mot de passe doit contenir au minimum 8 caractères, dont une majuscule, un chiffre et un caractère spécial.';
+    } else {
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE email = :email");
+            $stmt->execute(['email' => $email]);
+            $user = $stmt->fetch();
+
+            if ($user && $password === $user['MotDePasse']) {
+                // Logique de connexion réussie...
+            } else {
+                $errorMessage = 'Identifiant ou mot de passe incorrect.';
+            }
+        } catch (PDOException $e) {
+            $errorMessage = "Erreur lors de la vérification de l'utilisateur: " . $e->getMessage();
+        }
+    }
+}
+
+
+
+
+login avec cookies :
+
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$errorMessage = '';
+
+// Connexion à la base de données
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=douvinaigrette', 'projet_web_G3', '&M;k3V?B]F&DDM7');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    $errorMessage = "Impossible de se connecter à la base de données: " . $e->getMessage();
+}
+
+// Traitement du formulaire
+if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($errorMessage)) {
+    $email = $_POST['username'];
+    $password = $_POST['password'];
+
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM Utilisateur WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['MotDePasse'])) {
+            // Enregistrement de l'ID utilisateur et du type dans la session
+            $_SESSION['user_id'] = $user['Id_Utilisateur'];
+            $_SESSION['user_name'] = $user['Nom'];
+            $_SESSION['user_type'] = $user['Type'];
+
+            // Configuration du cookie de manière sécurisée
+            setcookie("user_id", $user['Id_Utilisateur'], [
+                'expires' => time() + (86400 * 1), 
+                'path' => '/',
+                'secure' => true, // true si vous utilisez HTTPS
+                'httponly' => true, 
+                'samesite' => 'Lax' 
+            ]);
+
+            // Redirection selon le type d'utilisateur
+            switch ($user['Type']) {
+                case 'admin':
+                    header('Location: HomeAdmin.php');
+                    exit();
+                case 'Pilote':
+                    header('Location: HomePilote.php');
+                    exit();
+                case 'Eleve':
+                    header('Location: HomeEleve.php');
+                    exit();
+                default:
+                    $errorMessage = "Type d'utilisateur non reconnu.";
+                    break;
+            }
+        } else {
+            $errorMessage = 'Identifiant ou mot de passe incorrect.';
+        }
+    } catch (PDOException $e) {
+        $errorMessage = "Erreur lors de la vérification de l'utilisateur: " . $e->getMessage();
+    }
+}
+?>
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://assets.douvinaigrette.sbihel.fr/login.css">
+</head>
+<body>
+
+<div class="login-container">
+<div id="logo">
+    <a href="Home">
+        <img src="https://assets.douvinaigrette.sbihel.fr/logo.png" alt="Company Logo">
+    </a>
+</div>
+    <div class="login-form">
+        <h2>SE CONNECTER</h2>
+        <form id="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="input-group">
+                <label for="username">EMAIL</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}" title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial.">
+
+            </div>
+            <div class="input-group">
+                <button type="submit">SE CONNECTER</button>
+            </div>
+            <?php
+            if ($errorMessage != '') {
+                echo '<div class="error-message">' . $errorMessage . '</div>';
+            }
+            ?>
+        </form>
+        <div class="links">
+            <a href="gestion">GESTION</a>
+            <a href="changemdp">PASSWORD LOST</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    var password = document.getElementById('password').value;
+    var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}$/;
+    
+    if (!regex.test(password)) {
+        event.preventDefault(); 
+        alert('Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial.');
+    }
+});
+</script>
+
+
+</body>
+</html>
+
+
+<?
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($errorMessage)) {
+    $email = $_POST['username'];
+    $password = $_POST['password'];
+
+    $passwordPattern = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}$/';
+
+    if (!preg_match($passwordPattern, $password)) {
+        $errorMessage = 'Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial.';
+    } else {
+      
+    }
+}
